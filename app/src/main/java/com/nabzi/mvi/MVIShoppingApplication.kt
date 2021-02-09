@@ -1,6 +1,7 @@
 package com.nabzi.mvi
 
 import android.app.Application
+import androidx.databinding.DataBindingUtil
 import com.airbnb.mvrx.Mavericks
 
 class MVIShoppingApplication : Application() {

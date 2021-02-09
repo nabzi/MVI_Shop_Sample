@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="app:layout_scrollFlags: To make the toolbar react to the scroll events, it is typically set to “scroll|exitUntilCollapsed”. Other values- expandAlwaysCollapsed,expandAlway,snap,exitUntilCollapsed
+app:collapsedTitleGravity: Specifies the gravity of title in the container when collapsed.
+app:contentScrim: Specifies drawable or Color value when scrolled sufficiently off screen
+app:layout_collapseMode: Specifies how child views of collapsing toolbar layout move when layout is moving. Parallax- moves in parallax fashion, Pin-view placed in fixed position
+content_scrolling.xml will have Textview to be displayed below toolbar while scrolling.
+Activity
+Import below librariesapp:layout_scrollFlags: To make the toolbar react to the scroll events, it is typically set to “scroll|exitUntilCollapsed”. Other values- expandAlwaysCollapsed,expandAlway,snap,exitUntilCollapsed
+app:collapsedTitleGravity: Specifies the gravity of title in the container when collapsed.
+app:contentScrim: Specifies drawable or Color value when scrolled sufficiently off screen
+app:layout_collapseMode: Specifies how child views of collapsing toolbar layout move when layout is moving. Parallax- moves in parallax fashion, Pin-view placed in fixed position
+content_scrolling.xml will have Textview to be displayed below toolbar while scrolling.
+Activity
+Import below librariesapp:layout_scrollFlags: To make the toolbar react to the scroll events, it is typically set to “scroll|exitUntilCollapsed”. Other values- expandAlwaysCollapsed,expandAlway,snap,exitUntilCollapsed
+app:collapsedTitleGravity: Specifies the gravity of title in the container when collapsed.
+app:contentScrim: Specifies drawable or Color value when scrolled sufficiently off screen
+app:layout_collapseMode: Specifies how child views of collapsing toolbar layout move when layout is moving. Parallax- moves in parallax fashion, Pin-view placed in fixed position
+content_scrolling.xml will have Textview to be displayed below toolbar while scrolling.
+Activity
+Import below libraries
+Import below librariesapp:layout_scrollFlags: To make the toolbar react to the scroll events, it is typically set to “scroll|exitUntilCollapsed”. Other values- expandAlwaysCollapsed,expandAlway,snap,exitUntilCollapsed
+app:collapsedTitleGravity: Specifies the gravity of title in the container when collapsed.
+app:contentScrim: Specifies drawable or Color value when scrolled sufficiently off screen
+app:layout_collapseMode: Specifies how child views of collapsing toolbar layout move when layout is moving. Parallax- moves in parallax fashion, Pin-view placed in fixed position
+content_scrolling.xml will have Textview to be displayed below toolbar while scrolling.
+Activity
+Import below libraries"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
