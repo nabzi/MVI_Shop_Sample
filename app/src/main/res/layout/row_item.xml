@@ -12,6 +12,7 @@
     android:layout_height="match_parent">
     <ImageView
         android:id="@+id/ivImage"
+        app:imageFromUrl="@{item.imageUrl}"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginStart="16dp"
@@ -23,6 +24,7 @@
 
     <TextView
         android:id="@+id/title"
+        android:text="@{item.title}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -34,6 +36,7 @@
 
         <TextView
             android:id="@+id/desc"
+            android:text="@{item.desc}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
