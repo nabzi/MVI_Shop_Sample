@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home"
         android:name="com.nabzi.mvi.HomeFragment"
-        android:label="EnterPhoneNumberFragment"
+        android:label="home"
         tools:layout="@layout/fragment_home">
     </fragment>
 </navigation>

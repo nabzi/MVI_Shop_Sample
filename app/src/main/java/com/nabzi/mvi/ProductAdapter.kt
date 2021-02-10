@@ -2,23 +2,21 @@ package com.nabzi.mvi
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Switch
-import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.nabzi.mvi.databinding.RowItemBinding
-import com.nabzi.mvi.model.Item
+import com.nabzi.mvi.databinding.RowProductBinding
+import com.nabzi.mvi.model.Product
 
 
-class ItemAdapter(private val onAddItemClick: (Long) -> Unit) :
-    ListAdapter<Item, RecyclerView.ViewHolder>(diffCallback) {
+class ProductAdapter(private val onAddItemClick: (Long) -> Unit) :
+    ListAdapter<Product, RecyclerView.ViewHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder =
         ItemViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.row_item, parent, false
+                R.layout.row_product, parent, false
             ), onAddItemClick
         )
 
@@ -31,27 +29,27 @@ class ItemAdapter(private val onAddItemClick: (Long) -> Unit) :
 
     companion object {
         //This diff callback informs the PagedListAdapter how to compute list differences when new
-        private val diffCallback = object : DiffUtil.ItemCallback<Item>() {
-            override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean =
-                oldItem.id == newItem.id
+        private val diffCallback = object : DiffUtil.ItemCallback<Product>() {
+            override fun areItemsTheSame(oldProduct: Product, newProduct: Product): Boolean =
+                oldProduct.id == newProduct.id
 
-            override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean =
-                oldItem == newItem
+            override fun areContentsTheSame(oldProduct: Product, newProduct: Product): Boolean =
+                oldProduct == newProduct
         }
     }
 
 }
 
-class ItemViewHolder(val binding: RowItemBinding, val onItemClick: (Long) -> Unit) :
+class ItemViewHolder(val binding: RowProductBinding, val onItemClick: (Long) -> Unit) :
     RecyclerView.ViewHolder(binding.root) {
-    var item: Item? = null
-    fun bindTo(_item: Item) {
-        this.item = _item
+    var product: Product? = null
+    fun bindTo(_product: Product) {
+        this.product = _product
         binding.btnAdd.setOnClickListener {
-            onItemClick(_item.id)
+            onItemClick(_product.id)
         }
         with(binding) {
-            item = _item
+            item = _product
             executePendingBindings()
         }
     }

@@ -5,7 +5,7 @@
 <data>
     <variable
         name="item"
-        type="com.nabzi.mvi.model.Item" />
+        type="com.nabzi.mvi.model.Product" />
 </data>
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

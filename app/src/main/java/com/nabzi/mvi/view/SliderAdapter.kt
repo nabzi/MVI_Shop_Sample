@@ -1,39 +1,38 @@
 package com.nabzi.mvi.view
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.nabzi.mvi.R
-import com.nabzi.mvi.model.Item
 import com.smarteist.autoimageslider.SliderViewAdapter
-import java.util.*
 import kotlin.collections.ArrayList
 
+data class SlidingItem(
+    var imageUrl : String
+)
 class SliderAdapter : SliderViewAdapter<SliderAdapterVH>() {
     private var context: Context? = null
-    private var mItems: ArrayList<Item> = arrayListOf()
+    private var mSlidingItems: ArrayList<SlidingItem> = arrayListOf()
     fun SliderAdapterExample(context: Context?) {
         this.context = context
     }
 
-    fun renewItems(items: ArrayList<Item>) {
-        mItems = items
+    fun renewItems(SlidingItems: ArrayList<SlidingItem>) {
+        mSlidingItems = SlidingItems
         notifyDataSetChanged()
     }
 
     fun deleteItem(position: Int) {
-        mItems.removeAt(position)
+        mSlidingItems.removeAt(position)
         notifyDataSetChanged()
     }
 
-    fun addItem(item: Item) {
-        mItems.add(item)
+    fun addItem(SlidingItem: SlidingItem) {
+        mSlidingItems.add(SlidingItem)
         notifyDataSetChanged()
     }
 
@@ -44,12 +43,12 @@ class SliderAdapter : SliderViewAdapter<SliderAdapterVH>() {
     }
 
     override fun onBindViewHolder(viewHolder: SliderAdapterVH, position: Int) {
-        val item: Item = mItems[position]
+        val SlidingItem: SlidingItem = mSlidingItems[position]
 //        viewHolder.textViewDescription.setText(Item.desc)
 //        viewHolder.textViewDescription.textSize = 16f
 //        viewHolder.textViewDescription.setTextColor(Color.WHITE)
         Glide.with(viewHolder.itemView)
-            .load(item.imageUrl)
+            .load(SlidingItem.imageUrl)
             .fitCenter()
             .into(viewHolder.imageViewBackground)
         viewHolder.itemView.setOnClickListener(View.OnClickListener {
@@ -60,7 +59,7 @@ class SliderAdapter : SliderViewAdapter<SliderAdapterVH>() {
 
     override fun getCount(): Int {
         //slider view count could be dynamic size
-        return mItems.size
+        return mSlidingItems.size
     }
 
 
