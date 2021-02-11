@@ -52,7 +52,7 @@ class ProductRepository {
 
 }
 
-class HomeViewModel(initialState: ProductState, private val productRepository: ProductRepository) :
+class HomeViewModel(initialState: ProductState, productRepository: ProductRepository) :
     BaseMvRxViewModel<ProductState>(initialState) {
     init {
         productRepository.getProducts().execute { copy(products = it) }
