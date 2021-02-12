@@ -4,10 +4,11 @@ import com.airbnb.mvrx.BaseMvRxViewModel
 import com.airbnb.mvrx.MvRxViewModelFactory
 import com.airbnb.mvrx.ViewModelContext
 import com.nabzi.mvi.data.ProductRepository
+import com.nabzi.mvi.model.ProductState
 
 import io.reactivex.schedulers.Schedulers
 
-class HomeViewModel(initialState: ProductState, val productRepository: ProductRepository) :
+class ProductsViewModel(initialState: ProductState, val productRepository: ProductRepository) :
     BaseMvRxViewModel<ProductState>(initialState) {
     init {
         productRepository.getProducts().execute { copy(products = it) }
@@ -22,10 +23,10 @@ class HomeViewModel(initialState: ProductState, val productRepository: ProductRe
             }
     }
 
-    companion object : MvRxViewModelFactory<HomeViewModel, ProductState> {
-        override fun create(viewModelContext: ViewModelContext, state: ProductState): HomeViewModel? {
+    companion object : MvRxViewModelFactory<ProductsViewModel, ProductState> {
+        override fun create(viewModelContext: ViewModelContext, state: ProductState): ProductsViewModel? {
             val repository = ProductRepository()
-            return HomeViewModel(state, repository)
+            return ProductsViewModel(state, repository)
         }
     }
 }

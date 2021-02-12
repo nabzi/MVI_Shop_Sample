@@ -5,14 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.airbnb.mvrx.MvRxView
 import com.airbnb.mvrx.activityViewModel
 import com.airbnb.mvrx.withState
+import com.nabzi.mvi.R
 import com.nabzi.mvi.databinding.FragmentHomeBinding
 import com.nabzi.mvi.model.Product
+import com.nabzi.mvi.view.adapter.ProductAdapter
+import com.nabzi.mvi.view.adapter.SliderAdapter
+import com.nabzi.mvi.view.adapter.SlidingItem
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
@@ -25,16 +28,13 @@ interface HomeFragmentHandler {
 class HomeFragment  : Fragment() , MvRxView ,
     HomeFragmentHandler {
     private lateinit var binding : FragmentHomeBinding
-    private val viewModel: HomeViewModel by activityViewModel()
+    private val viewModel: ProductsViewModel by activityViewModel()
     private val  adapter = ProductAdapter(this)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-
-
         binding.rvProducts1.adapter = adapter
-       // adapter.submitList(itemList)
-
+        binding.handler = this
         return binding.root
     }
 
@@ -70,6 +70,6 @@ class HomeFragment  : Fragment() , MvRxView ,
     }
 
     override fun onCartFabClick() {
-        //findNavController().navigate()
+        findNavController(this).navigate(R.id.action_home_to_cart)
     }
 }

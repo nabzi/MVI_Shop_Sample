@@ -1,4 +1,4 @@
-package com.nabzi.mvi.view
+package com.nabzi.mvi.view.adapter
 
 import android.view.View
 import android.widget.ImageView
@@ -29,4 +29,9 @@ fun visibleIf(view: View, visible: Boolean) {
 fun <T> setListAdapterData(recyclerView: RecyclerView, data: Async<List<T>>?) {
     @Suppress("UNCHECKED_CAST")
     (recyclerView.adapter as ListAdapter<Any, *>).submitList(data?.invoke() ?: emptyList())
+}
+@BindingAdapter("dataList")
+fun <T> setListAdapterData(recyclerView: RecyclerView, data: List<T>?) {
+    @Suppress("UNCHECKED_CAST")
+    (recyclerView.adapter as ListAdapter<Any, *>).submitList(data ?: emptyList())
 }

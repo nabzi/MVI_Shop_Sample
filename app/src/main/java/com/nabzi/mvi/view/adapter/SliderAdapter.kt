@@ -1,4 +1,4 @@
-package com.nabzi.mvi.view
+package com.nabzi.mvi.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

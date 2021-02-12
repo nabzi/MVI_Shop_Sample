@@ -1,4 +1,4 @@
-package com.nabzi.mvi.view
+package com.nabzi.mvi.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

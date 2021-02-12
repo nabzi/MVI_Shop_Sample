@@ -3,12 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/home">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:name="com.nabzi.mvi.view.HomeFragment"
         android:label="home"
         tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_cart"
+            app:destination="@id/cart" />
+    </fragment>
+    <fragment
+        android:id="@+id/cart"
+        android:name="com.nabzi.mvi.view.CartFragment"
+        android:label="cart"
+        tools:layout="@layout/fragment_cart">
     </fragment>
 </navigation>

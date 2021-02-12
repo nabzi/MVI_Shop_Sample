@@ -1,8 +1,7 @@
-package com.nabzi.mvi.view
+package com.nabzi.mvi.model
 import com.airbnb.mvrx.MavericksState
 import com.airbnb.mvrx.Async
 import com.airbnb.mvrx.Uninitialized
-import com.nabzi.mvi.model.Product
 
 data class ProductState(
     val products: Async<List<Product>> = Uninitialized,
@@ -10,5 +9,6 @@ data class ProductState(
     val addToCartRequest: Async<Product> = Uninitialized
 ) :  MavericksState{
     val addedProducts = addedProductIds.map { id -> product(id) }
+    val sum = addedProducts.sumByDouble { it?.price!!.toDouble() }
     fun product(productId: Long?): Product? = products()?.firstOrNull { it.id == productId }
 }
