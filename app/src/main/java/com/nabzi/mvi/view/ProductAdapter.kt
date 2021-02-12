@@ -1,5 +1,4 @@
 package com.nabzi.mvi.view
-
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter

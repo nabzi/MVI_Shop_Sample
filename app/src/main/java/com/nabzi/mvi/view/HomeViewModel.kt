@@ -16,7 +16,10 @@ class HomeViewModel(initialState: ProductState, val productRepository: ProductRe
         val addedProduct = state.product(productId) ?: throw IllegalStateException("Product not found")
         productRepository.addToCart(addedProduct)
             .subscribeOn(Schedulers.io())
-            .execute { copy(addToCartRequest = it) }
+            .execute {
+                copy(addToCartRequest = it ,
+                     addedProductIds = if (it.complete) addedProductIds + productId else addedProductIds)
+            }
     }
 
     companion object : MvRxViewModelFactory<HomeViewModel, ProductState> {

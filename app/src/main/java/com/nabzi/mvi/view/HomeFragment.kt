@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.airbnb.mvrx.MvRxView
 import com.airbnb.mvrx.activityViewModel
 import com.airbnb.mvrx.withState
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 interface HomeFragmentHandler {
     fun onAddToCartClicked(product: Product)
+    fun onCartFabClick()
 }
 class HomeFragment  : Fragment() , MvRxView ,
     HomeFragmentHandler {
@@ -65,6 +67,9 @@ class HomeFragment  : Fragment() , MvRxView ,
 
     override fun onAddToCartClicked(product: Product) {
         viewModel.addToCart(product.id)
-        Toast.makeText(requireContext() , "added to cart" , Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onCartFabClick() {
+        //findNavController().navigate()
     }
 }
