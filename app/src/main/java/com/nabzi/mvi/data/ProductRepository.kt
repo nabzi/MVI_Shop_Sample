@@ -1,20 +1,24 @@
-package com.nabzi.mvi
-
-import androidx.lifecycle.ViewModel
-import com.airbnb.mvrx.BaseMvRxViewModel
-import com.airbnb.mvrx.MvRxViewModelFactory
-import com.airbnb.mvrx.ViewModelContext
-import io.reactivex.Observable
+package com.nabzi.mvi.data
 
 import com.nabzi.mvi.model.Product
 import com.nabzi.mvi.model.ProductType
-import com.nabzi.mvi.view.ProductState
+import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class ProductRepository {
     fun getProducts() = Observable.fromCallable<List<Product>> {
+        fetchProductsFromServer()
+    }.subscribeOn(Schedulers.io())
+
+    fun addToCart(product: Product) = Single.just(product)
+        .delaySubscription(2, TimeUnit.SECONDS)
+        .subscribeOn(Schedulers.io())
+
+    fun fetchProductsFromServer() : List<Product>{
         Thread.sleep(2000)
-        arrayListOf<Product>(
+        return arrayListOf<Product>(
             Product(
                 1,
                 "item1",
@@ -48,19 +52,5 @@ class ProductRepository {
                 400f
             )
         )
-    }.subscribeOn(Schedulers.io())
-
-}
-
-class HomeViewModel(initialState: ProductState, productRepository: ProductRepository) :
-    BaseMvRxViewModel<ProductState>(initialState) {
-    init {
-        productRepository.getProducts().execute { copy(products = it) }
-    }
-    companion object : MvRxViewModelFactory<HomeViewModel, ProductState> {
-        override fun create(viewModelContext: ViewModelContext, state: ProductState): HomeViewModel? {
-            val repository = ProductRepository()
-            return HomeViewModel(state, repository)
-        }
     }
 }

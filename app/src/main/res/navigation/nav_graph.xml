@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.nabzi.mvi.HomeFragment"
+        android:name="com.nabzi.mvi.view.HomeFragment"
         android:label="home"
         tools:layout="@layout/fragment_home">
     </fragment>

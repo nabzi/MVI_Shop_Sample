@@ -76,5 +76,13 @@
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
             android:src="@drawable/ic_baseline_shopping_cart_24" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            app:visibleIf="@{state.products.invoke() == null}"
+            android:layout_height="wrap_content" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

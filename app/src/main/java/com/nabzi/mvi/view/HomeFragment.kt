@@ -1,37 +1,35 @@
-package com.nabzi.mvi
+package com.nabzi.mvi.view
 
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
 import com.airbnb.mvrx.MvRxView
 import com.airbnb.mvrx.activityViewModel
 import com.airbnb.mvrx.withState
 import com.nabzi.mvi.databinding.FragmentHomeBinding
 import com.nabzi.mvi.model.Product
-import com.nabzi.mvi.model.ProductType
-import com.nabzi.mvi.view.SliderAdapter
-import com.nabzi.mvi.view.SlidingItem
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import kotlinx.android.synthetic.main.fragment_home.*
 
-
-class HomeFragment  : Fragment() , MvRxView {
-    lateinit var adapter : ProductAdapter
+interface HomeFragmentHandler {
+    fun onAddToCartClicked(product: Product)
+}
+class HomeFragment  : Fragment() , MvRxView ,
+    HomeFragmentHandler {
     private lateinit var binding : FragmentHomeBinding
     private val viewModel: HomeViewModel by activityViewModel()
+    private val  adapter = ProductAdapter(this)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
-        adapter = ProductAdapter {
-            //add item to cart
-        }
+
         binding.rvProducts1.adapter = adapter
        // adapter.submitList(itemList)
 
@@ -65,4 +63,8 @@ class HomeFragment  : Fragment() , MvRxView {
         binding.state = state
     }
 
+    override fun onAddToCartClicked(product: Product) {
+        viewModel.addToCart(product.id)
+        Toast.makeText(requireContext() , "added to cart" , Toast.LENGTH_SHORT).show()
+    }
 }

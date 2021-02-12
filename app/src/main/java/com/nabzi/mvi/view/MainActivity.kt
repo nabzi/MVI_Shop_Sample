@@ -1,6 +1,6 @@
-package com.nabzi.mvi
+package com.nabzi.mvi.view
 
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.nabzi.mvi.R
 
 class MainActivity : AppCompatActivity(R.layout.activity_main)

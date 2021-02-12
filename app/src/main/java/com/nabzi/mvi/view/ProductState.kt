@@ -6,7 +6,8 @@ import com.nabzi.mvi.model.Product
 
 data class ProductState(
     val products: Async<List<Product>> = Uninitialized,
-    val addedProductIds: List<Long> = arrayListOf()
+    val addedProductIds: List<Long> = arrayListOf(),
+    val addToCartRequest: Async<Product> = Uninitialized
 ) :  MavericksState{
     val addedProducts = addedProductIds.map { id -> product(id) }
     fun product(productId: Long?): Product? = products()?.firstOrNull { it.id == productId }
