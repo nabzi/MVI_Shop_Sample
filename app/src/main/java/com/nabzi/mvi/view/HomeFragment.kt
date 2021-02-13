@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.airbnb.mvrx.MvRxView
@@ -21,6 +22,7 @@ import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import kotlinx.android.synthetic.main.fragment_home.*
 
+
 interface HomeFragmentHandler {
     fun onAddToCartClicked(product: Product)
     fun onCartFabClick()
@@ -35,6 +37,7 @@ class HomeFragment  : Fragment() , MvRxView ,
         binding.lifecycleOwner = this
         binding.rvProducts1.adapter = adapter
         binding.handler = this
+
         return binding.root
     }
 

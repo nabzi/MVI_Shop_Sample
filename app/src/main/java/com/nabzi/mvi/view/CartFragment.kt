@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.airbnb.mvrx.MvRxView
 import com.airbnb.mvrx.activityViewModel
 import com.airbnb.mvrx.withState
 import com.nabzi.mvi.databinding.FragmentCartBinding
 import com.nabzi.mvi.view.adapter.ProductInCartAdapter
+import kotlinx.android.synthetic.main.fragment_cart.*
 
 interface CartFragmentHandler {
     fun onFabMenuClick()
@@ -30,6 +32,9 @@ class CartFragment  : Fragment() , MvRxView ,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        toolbar.setNavigationOnClickListener{
+            findNavController(this).navigateUp()
+        }
     }
 
 
