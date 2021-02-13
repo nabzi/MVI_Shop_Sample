@@ -24,13 +24,12 @@
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp">
+                android:layout_height="600dp">
 
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:id="@+id/collapsing_toolbar_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layoutMode="clipBounds"
                     app:contentScrim="?attr/colorPrimary"
                     app:expandedTitleGravity="top"
                     app:expandedTitleMarginEnd="64dp"
@@ -68,7 +67,6 @@
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
             </com.google.android.material.appbar.AppBarLayout>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvProducts1"
                 android:layout_width="match_parent"
@@ -76,7 +74,6 @@
                 app:asyncList="@{state.products}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

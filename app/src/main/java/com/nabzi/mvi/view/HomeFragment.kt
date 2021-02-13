@@ -45,9 +45,10 @@ class HomeFragment  : Fragment() , MvRxView ,
 
     private fun setupSlider() {
         var sliderAdapter = SliderAdapter()
-        sliderAdapter.addItem(SlidingItem("https://homepages.cae.wisc.edu/~ece533/images/airplane.png"))
-        sliderAdapter.addItem(SlidingItem("https://homepages.cae.wisc.edu/~ece533/images/boat.png"))
-        sliderAdapter.addItem(SlidingItem("https://homepages.cae.wisc.edu/~ece533/images/girl.png"))
+        sliderAdapter.addItem(SlidingItem("https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-pouring-water-413x516.jpg"))
+        sliderAdapter.addItem(SlidingItem("https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-pouring-water-413x516.jpg"))
+        //sliderAdapter.addItem(SlidingItem("https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2020/10/detail-of-cherry-tomatoes-with-drops-of-water-and-spaghetti-413x620.jpg"))
+        sliderAdapter.addItem(SlidingItem("https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2020/10/parsley-leaf-413x620.jpg"))
         imageSlider.setSliderAdapter(sliderAdapter);
         imageSlider.run{
             setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!

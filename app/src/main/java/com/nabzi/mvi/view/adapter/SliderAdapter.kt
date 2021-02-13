@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.nabzi.mvi.R
 import com.smarteist.autoimageslider.SliderViewAdapter
-import kotlin.collections.ArrayList
+
 
 data class SlidingItem(
     var imageUrl : String
@@ -47,9 +48,10 @@ class SliderAdapter : SliderViewAdapter<SliderAdapterVH>() {
 //        viewHolder.textViewDescription.setText(Item.desc)
 //        viewHolder.textViewDescription.textSize = 16f
 //        viewHolder.textViewDescription.setTextColor(Color.WHITE)
+
         Glide.with(viewHolder.itemView)
             .load(SlidingItem.imageUrl)
-            .fitCenter()
+            .centerCrop()
             .into(viewHolder.imageViewBackground)
         viewHolder.itemView.setOnClickListener(View.OnClickListener {
             Toast.makeText(context, "This is item in position $position", Toast.LENGTH_SHORT)
