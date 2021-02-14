@@ -1,15 +1,16 @@
 package com.nabzi.mvi.data
 
+import com.example.google_map_sample.network.ApiService
+import com.google.gson.Gson
 import com.nabzi.mvi.model.Product
-import com.nabzi.mvi.model.ProductType
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class ProductRepository {
+class ProductRepository(val apiService : ApiService) {
     fun getProducts() = Observable.fromCallable<List<Product>> {
-        fetchProductsFromServer()
+        apiService.getProductList().body()
     }.subscribeOn(Schedulers.io())
 
     fun addToCart(product: Product) = Single.just(product)
@@ -23,7 +24,7 @@ class ProductRepository {
                 1,
                 "item1",
                 "desc1",
-                ProductType.PIZZA,
+                "pizza",
                 "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/02/pizza-ready-for-baking-413x275.jpg",
                 100f
             ),
@@ -31,15 +32,15 @@ class ProductRepository {
                 2,
                 "item2",
                 "desc2",
-                ProductType.PIZZA,
-                "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/06/beautiful-vibrant-shot-of-traditional-korean-meals-413x275.jpg",
+                "pizza",
+                    "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/06/beautiful-vibrant-shot-of-traditional-korean-meals-413x275.jpg",
                 200f
             ),
             Product(
                 3,
                 "item3",
                 "desc3",
-                ProductType.PIZZA,
+                "pizza",
                 "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-fried-rice-413x330.jpg",
                 300f
             ),
@@ -47,7 +48,7 @@ class ProductRepository {
                 4,
                 "item4",
                 "desc5",
-                ProductType.PIZZA,
+                "pizza",
                 "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/07/neapolitan-pizza-margherita-413x275.jpg",
                 400f
             )

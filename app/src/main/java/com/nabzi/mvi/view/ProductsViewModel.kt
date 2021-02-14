@@ -7,9 +7,14 @@ import com.nabzi.mvi.data.ProductRepository
 import com.nabzi.mvi.model.ProductState
 
 import io.reactivex.schedulers.Schedulers
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class ProductsViewModel(initialState: ProductState, val productRepository: ProductRepository) :
-    BaseMvRxViewModel<ProductState>(initialState) {
+class ProductsViewModel(initialState: ProductState) :
+    BaseMvRxViewModel<ProductState>(initialState) , KoinComponent{
+
+    val productRepository: ProductRepository by inject()
+
     init {
         productRepository.getProducts().execute { copy(products = it) }
     }
@@ -25,8 +30,7 @@ class ProductsViewModel(initialState: ProductState, val productRepository: Produ
 
     companion object : MvRxViewModelFactory<ProductsViewModel, ProductState> {
         override fun create(viewModelContext: ViewModelContext, state: ProductState): ProductsViewModel? {
-            val repository = ProductRepository()
-            return ProductsViewModel(state, repository)
+            return ProductsViewModel(state)
         }
     }
 }
