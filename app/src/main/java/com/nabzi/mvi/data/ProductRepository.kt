@@ -1,7 +1,6 @@
 package com.nabzi.mvi.data
 
 import com.example.google_map_sample.network.ApiService
-import com.google.gson.Gson
 import com.nabzi.mvi.model.Product
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -10,15 +9,17 @@ import java.util.concurrent.TimeUnit
 
 class ProductRepository(val apiService : ApiService) {
     fun getProducts() = Observable.fromCallable<List<Product>> {
-        apiService.getProductList().body()
+        fetchFakeProducts()
+        //Unfortunately I didn't have enough time to debug my FakeInterceptor, and it doesn't work yet
+//        apiService.getProductList().body()
     }.subscribeOn(Schedulers.io())
 
     fun addToCart(product: Product) = Single.just(product)
         .delaySubscription(2, TimeUnit.SECONDS)
         .subscribeOn(Schedulers.io())
 
-    fun fetchProductsFromServer() : List<Product>{
-        Thread.sleep(2000)
+    fun fetchFakeProducts() : List<Product>{
+        Thread.sleep(1000)
         return arrayListOf<Product>(
             Product(
                 1,

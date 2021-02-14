@@ -4,17 +4,14 @@ import com.airbnb.mvrx.BaseMvRxViewModel
 import com.airbnb.mvrx.MvRxViewModelFactory
 import com.airbnb.mvrx.ViewModelContext
 import com.nabzi.mvi.data.ProductRepository
+import com.nabzi.mvi.di.ServiceLocator
 import com.nabzi.mvi.model.ProductState
 
 import io.reactivex.schedulers.Schedulers
-import org.koin.core.KoinComponent
-import org.koin.core.inject
 
-class ProductsViewModel(initialState: ProductState) :
-    BaseMvRxViewModel<ProductState>(initialState) , KoinComponent{
-
-    val productRepository: ProductRepository by inject()
-
+class ProductsViewModel(initialState: ProductState ,val  productRepository: ProductRepository) :
+    BaseMvRxViewModel<ProductState>(initialState)
+{
     init {
         productRepository.getProducts().execute { copy(products = it) }
     }
@@ -30,7 +27,8 @@ class ProductsViewModel(initialState: ProductState) :
 
     companion object : MvRxViewModelFactory<ProductsViewModel, ProductState> {
         override fun create(viewModelContext: ViewModelContext, state: ProductState): ProductsViewModel? {
-            return ProductsViewModel(state)
+            val productRepository = ServiceLocator.getProductRepository()
+            return ProductsViewModel(state , productRepository)
         }
     }
 }

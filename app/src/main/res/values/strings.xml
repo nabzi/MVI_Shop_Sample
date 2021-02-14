@@ -1,49 +1,4 @@
 <resources>
     <string name="app_name">MVI_Shopping_Sample</string>
-    data class Product (
-    var id       : Long,
-    var title    : String,
-    var desc     : String,
-    var type     : ProductType,
-    var imageUrl : String,
-    var price    : Float
-    )
-    <string name="productList">
 
-        "[
-        {
-        "id" : 1 ,
-        "title" : "A healthy food",
-        "desc" : "This is A healthy food" ,
-        "type" :  "pizza",
-        "imageUrl" : "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/02/pizza-ready-for-baking-413x275.jpg",
-        "price" : 100.0
-        },
-         {
-        "id" : 2 ,
-        "title" : "A great food",
-        "desc" : "This is A great food" ,
-        "type" :  "pizza",
-        "imageUrl" : "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/06/beautiful-vibrant-shot-of-traditional-korean-meals-413x275.jpg",
-        "price" : 200.0
-        },
-         {
-        "id" : 3 ,
-        "title" : "A fatty food",
-        "desc" : "This is A fatty food" ,
-         "type" :  "pizza",
-        "imageUrl" : "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-fried-rice-413x330.jpg",
-        "price" : 300.0
-        },
-         {
-        "id" : 4 ,
-        "title" : "A yummy food",
-        "desc" : "This is A yummy food" ,
-         "type" :  "pizza",
-        "imageUrl" : "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_413/https://www.foodiesfeed.com/wp-content/uploads/2019/07/neapolitan-pizza-margherita-413x275.jpg",
-        "price" : 400.0
-        }
-        ]
-
-    </string>
 </resources>

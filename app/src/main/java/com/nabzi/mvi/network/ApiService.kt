@@ -5,7 +5,7 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    @GET("")
+    @GET("/")
     fun getProductList() : Response<List<Product>>
 
 }
